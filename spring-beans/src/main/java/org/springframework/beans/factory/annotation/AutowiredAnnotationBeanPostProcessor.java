@@ -213,6 +213,7 @@ public class AutowiredAnnotationBeanPostProcessor extends InstantiationAwareBean
 
 
 	@Override
+	//查找并合并需要依赖注入的Bean属性
 	public void postProcessMergedBeanDefinition(RootBeanDefinition beanDefinition, Class<?> beanType, String beanName) {
 		InjectionMetadata metadata = findAutowiringMetadata(beanName, beanType, null);
 		metadata.checkConfigMembers(beanDefinition);
@@ -459,6 +460,7 @@ public class AutowiredAnnotationBeanPostProcessor extends InstantiationAwareBean
 			ReflectionUtils.doWithLocalFields(targetClass, field -> {
 				//获取给定字段上的注解
 				AnnotationAttributes ann = findAutowiredAnnotation(field);
+				//第一次会找不到，因为该类被CgLib提升
 				if (ann != null) {
 					//如果给定字段是静态的(static)，则直接遍历下一个字段
 					if (Modifier.isStatic(field.getModifiers())) {

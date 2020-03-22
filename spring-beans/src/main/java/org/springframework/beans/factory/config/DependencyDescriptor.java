@@ -66,6 +66,7 @@ public class DependencyDescriptor extends InjectionPoint implements Serializable
 
 	private final boolean required;
 
+	//是否为饥饿的，与lazy相反
 	private final boolean eager;
 
 	private int nestingLevel = 1;
