@@ -96,6 +96,8 @@ import org.springframework.util.MultiValueMap;
  * @see AnnotationUtils
  * @see BridgeMethodResolver
  */
+//该工具类可以递归获取元注解，解析@AliasFor
+//如 @Service 可以 解析到  @Component
 public class AnnotatedElementUtils {
 
 	/**

@@ -312,6 +312,7 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 	 */
 	//扫描给定类路径的包
 	public Set<BeanDefinition> findCandidateComponents(String basePackage) {
+		//@Indexed 注解启用时
 		if (this.componentsIndex != null && indexSupportsIncludeFilters()) {
 			return addCandidateComponentsFromIndex(this.componentsIndex, basePackage);
 		}
@@ -390,6 +391,7 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 			boolean debugEnabled = logger.isDebugEnabled();
 			for (String type : types) {
 				//为指定资源获取元数据读取器，元信息读取器通过汇编(ASM)读//取资源元信息
+				//使用的是CachingMetadataReaderFactory
 				MetadataReader metadataReader = getMetadataReaderFactory().getMetadataReader(type);
 				//如果扫描到的类符合容器配置的过滤规则
 				if (isCandidateComponent(metadataReader)) {
@@ -435,6 +437,8 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 				}
 				if (resource.isReadable()) {
 					try {
+						//唯一实现 SimpleMetadataReader ，其中的AnnotationMetadataReadingVisitor可以递归获取元注解
+						//递归获取元注解也可以使用 AnnotatedElementUtils
 						MetadataReader metadataReader = getMetadataReaderFactory().getMetadataReader(resource);
 						if (isCandidateComponent(metadataReader)) {
 							ScannedGenericBeanDefinition sbd = new ScannedGenericBeanDefinition(metadataReader);

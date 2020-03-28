@@ -779,6 +779,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		oldBeanDefinition = this.beanDefinitionMap.get(beanName);
 
 		if (oldBeanDefinition != null) {
+			//是否允许覆盖原有bean，springboot会设置为不允许
 			if (!isAllowBeanDefinitionOverriding()) {
 				throw new BeanDefinitionStoreException(beanDefinition.getResourceDescription(), beanName,
 						"Cannot register bean definition [" + beanDefinition + "] for bean '" + beanName +
