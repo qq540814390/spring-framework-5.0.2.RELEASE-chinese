@@ -33,6 +33,7 @@ import org.springframework.lang.Nullable;
  * @author Adrian Colyer
  * @since 2.0
  */
+//接口参数解析器
 public interface ParameterNameDiscoverer {
 
 	/**

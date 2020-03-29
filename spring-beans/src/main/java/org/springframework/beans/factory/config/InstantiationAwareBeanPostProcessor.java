@@ -68,6 +68,8 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
 	 * @see org.springframework.beans.factory.support.AbstractBeanDefinition#hasBeanClass
 	 * @see org.springframework.beans.factory.support.AbstractBeanDefinition#getFactoryMethodName
 	 */
+	// 这里主要用来返回一个代理对象 ，返回null时不做任何处理，使用默认实例化对象
+	// 这里如果有返回，就直接返回该对象，后面创建对象操作就越过了
 	@Nullable
 	default Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
 		return null;
