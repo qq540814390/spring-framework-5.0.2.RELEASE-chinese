@@ -41,6 +41,7 @@ package org.springframework.beans.factory;
  * @since 4.1
  * @see org.springframework.beans.factory.config.ConfigurableListableBeanFactory#preInstantiateSingletons()
  */
+//Bean 初始化完成后回调接口，在该处回调能确保Bean被完全初始化了
 public interface SmartInitializingSingleton {
 
 	/**

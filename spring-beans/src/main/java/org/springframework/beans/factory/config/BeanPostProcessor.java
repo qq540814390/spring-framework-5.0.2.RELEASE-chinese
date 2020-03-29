@@ -55,7 +55,7 @@ public interface BeanPostProcessor {
 	 * @throws org.springframework.beans.BeansException in case of errors
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet
 	 */
-	//为在Bean的初始化前提供回调入口
+	//Bean的实例化后，组装后，初始化之前的回调接口（初始化指回调初始化方法）
 	@Nullable
 	default Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 		return bean;

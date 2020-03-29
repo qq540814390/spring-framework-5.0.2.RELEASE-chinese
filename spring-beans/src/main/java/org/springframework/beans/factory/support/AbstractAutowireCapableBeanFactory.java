@@ -1362,7 +1362,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		//获取容器在解析Bean定义资源时为BeanDefiniton中设置的属性值
 		PropertyValues pvs = (mbd.hasPropertyValues() ? mbd.getPropertyValues() : null);
 
-		//对依赖注入处理，首先处理autowiring自动装配的依赖注入
+		//对依赖注入处理，首先处理配置文件autowiring自动装配的依赖注入（一般不用）
 		if (mbd.getResolvedAutowireMode() == RootBeanDefinition.AUTOWIRE_BY_NAME ||
 				mbd.getResolvedAutowireMode() == RootBeanDefinition.AUTOWIRE_BY_TYPE) {
 			MutablePropertyValues newPvs = new MutablePropertyValues(pvs);

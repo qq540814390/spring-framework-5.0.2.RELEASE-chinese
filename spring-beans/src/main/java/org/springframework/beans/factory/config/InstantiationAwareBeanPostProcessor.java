@@ -68,7 +68,7 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
 	 * @see org.springframework.beans.factory.support.AbstractBeanDefinition#hasBeanClass
 	 * @see org.springframework.beans.factory.support.AbstractBeanDefinition#getFactoryMethodName
 	 */
-	// 这里主要用来返回一个代理对象 ，返回null时不做任何处理，使用默认实例化对象
+	// Bean的实例化之前，这里主要用来返回一个代理对象 ，返回null时不做任何处理，使用默认实例化对象
 	// 这里如果有返回，就直接返回该对象，后面创建对象操作就越过了
 	@Nullable
 	default Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
@@ -89,6 +89,7 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
 	 * instances being invoked on this bean instance.
 	 * @throws org.springframework.beans.BeansException in case of errors
 	 */
+	// 返回false时，bean不允许属性（填入）赋值（可以在此时手动赋值，跳过元信息中的默认值），当然也会跳过@Autowire
 	default boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
 		return true;
 	}
@@ -112,6 +113,7 @@ public interface InstantiationAwareBeanPostProcessor extends BeanPostProcessor {
 	 * @throws org.springframework.beans.BeansException in case of errors
 	 * @see org.springframework.beans.MutablePropertyValues
 	 */
+	//在 BeanFactory 给 Bean 进行属性赋值的前置操作（可以修改配置元信息）
 	@Nullable
 	default PropertyValues postProcessPropertyValues(
 			PropertyValues pvs, PropertyDescriptor[] pds, Object bean, String beanName) throws BeansException {
