@@ -106,6 +106,7 @@ import org.springframework.util.StringUtils;
  * @see DefaultBindingErrorProcessor
  * @see org.springframework.context.MessageSource
  */
+//用户将PropertyValues与对象绑定，如 address.name = 深圳 绑定到 User 对象中 address属性下 name属性上
 public class DataBinder implements PropertyEditorRegistry, TypeConverter {
 
 	/** Default object name used for binding: "target" */
@@ -131,20 +132,26 @@ public class DataBinder implements PropertyEditorRegistry, TypeConverter {
 	@Nullable
 	private SimpleTypeConverter typeConverter;
 
+	//是否忽略未知字段，不忽略会抛异常
 	private boolean ignoreUnknownFields = true;
 
+	//是否忽略非法字段，false在设置非法字段时不抛异常，可以在getBindingResult()中获取结果
 	private boolean ignoreInvalidFields = false;
 
+	//是否嵌套绑定，false的情况需要一步步绑定
 	private boolean autoGrowNestedPaths = true;
 
 	private int autoGrowCollectionLimit = DEFAULT_AUTO_GROW_COLLECTION_LIMIT;
 
+	//白名单字段
 	@Nullable
 	private String[] allowedFields;
 
+	//黑名单字段
 	@Nullable
 	private String[] disallowedFields;
 
+	//必须绑定字段
 	@Nullable
 	private String[] requiredFields;
 

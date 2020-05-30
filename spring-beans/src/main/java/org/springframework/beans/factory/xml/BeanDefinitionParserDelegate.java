@@ -1409,11 +1409,15 @@ public class BeanDefinitionParserDelegate {
 	}
 
 	@Nullable
+	//containingBd 参数指的是嵌套Bean
 	public BeanDefinition parseCustomElement(Element ele, @Nullable BeanDefinition containingBd) {
+		//拿到自定义的命名空间
+		//如 http://www.springframework.org/schema/util
 		String namespaceUri = getNamespaceURI(ele);
 		if (namespaceUri == null) {
 			return null;
 		}
+		//通过NameSpace获取NamespaceHandler
 		NamespaceHandler handler = this.readerContext.getNamespaceHandlerResolver().resolve(namespaceUri);
 		if (handler == null) {
 			error("Unable to locate Spring NamespaceHandler for XML schema namespace [" + namespaceUri + "]", ele);

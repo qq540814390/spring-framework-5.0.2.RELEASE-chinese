@@ -25,6 +25,7 @@ import org.springframework.lang.Nullable;
  * @author Rob Harrop
  * @since 2.0
  */
+//在生成BeanDefinition时储存中间值，辅助作用
 public interface AttributeAccessor {
 
 	/**

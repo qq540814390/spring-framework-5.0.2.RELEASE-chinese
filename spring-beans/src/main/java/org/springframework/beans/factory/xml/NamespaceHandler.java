@@ -46,6 +46,7 @@ import org.springframework.lang.Nullable;
  * @see DefaultBeanDefinitionDocumentReader
  * @see NamespaceHandlerResolver
  */
+//xml 扩展的命名空间绑定
 public interface NamespaceHandler {
 
 	/**

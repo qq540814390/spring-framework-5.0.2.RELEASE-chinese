@@ -25,7 +25,7 @@ import org.springframework.lang.Nullable;
  * @author Juergen Hoeller
  * @since 2.0
  */
-//得到Bean的来源，可以放入自定义注解
+//得到Bean的来源，辅助作用
 public interface BeanMetadataElement {
 
 	/**

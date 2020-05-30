@@ -131,6 +131,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
 
 		//具体的解析过程由BeanDefinitionParserDelegate实现，
 		//BeanDefinitionParserDelegate中定义了Spring Bean定义XML文件的各种元素
+		//其中存在属性默认值
 		BeanDefinitionParserDelegate parent = this.delegate;
 		this.delegate = createDelegate(getReaderContext(), root, parent);
 

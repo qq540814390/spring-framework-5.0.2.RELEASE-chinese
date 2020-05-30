@@ -30,6 +30,9 @@ import org.springframework.core.convert.TypeDescriptor;
  * @see GenericConverter
  * @see ConditionalConverter
  */
+//自定义扩展类型转换器需要实现该聚合接口，并声明成Bean
+// TypeDescriptor可以取出对象的类型进行判断
+// 需要通过{@link ConversionServiceFactoryBean} 来添加，并且 id 一定要为 conversionService
 public interface ConditionalGenericConverter extends GenericConverter, ConditionalConverter {
 
 }
